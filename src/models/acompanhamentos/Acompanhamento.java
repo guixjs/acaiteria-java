@@ -1,8 +1,8 @@
-package models;
+package models.acompanhamentos;
 
 import enums.TipoAcompanhamento;
 
-public class Acompanhamento {
+public abstract class Acompanhamento {
   private String nome;
   private double preco;
   private TipoAcompanhamento tipo;
@@ -23,6 +23,12 @@ public class Acompanhamento {
 
   public TipoAcompanhamento getTipo() {
     return tipo;
+  }
+
+  public String detalhesAcompanhamento() {
+    String mensagem = "Tipo do acompanhamento: %s\nNome: %s\nPreço: R$%.2f".formatted(this.tipo, this.nome, this.preco);
+
+    return mensagem;
   }
 
 }

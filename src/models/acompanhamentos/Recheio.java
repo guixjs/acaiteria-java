@@ -1,4 +1,4 @@
-package models;
+package models.acompanhamentos;
 
 import enums.TipoAcompanhamento;
 
