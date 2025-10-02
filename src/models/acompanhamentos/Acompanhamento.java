@@ -31,4 +31,8 @@ public abstract class Acompanhamento {
     return mensagem;
   }
 
+  public String toString() {
+    return nome + " (R$ " + preco + ")";
+  }
+
 }

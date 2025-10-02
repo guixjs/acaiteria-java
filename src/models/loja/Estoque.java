@@ -1,4 +1,4 @@
-package models;
+package models.loja;
 
 import java.util.List;
 

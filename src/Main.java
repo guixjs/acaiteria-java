@@ -1,13 +1,12 @@
-import java.util.ArrayList;
 import java.util.List;
 
+import enums.QuantidadeAcompanhamento;
 import enums.TamanhoAcai;
-import models.Acai;
-import models.Estoque;
 import models.acompanhamentos.Acompanhamento;
 import models.acompanhamentos.Fruta;
-import models.acompanhamentos.Recheio;
-import services.AcaiService;
+import models.loja.Acai;
+import models.loja.AcompanhamentoEscolhido;
+import models.loja.Estoque;
 import services.PreencherEstoque;
 
 public class Main {
@@ -15,18 +14,13 @@ public class Main {
 
     Estoque estoque = PreencherEstoque.execute();
 
-    List<Fruta> f = estoque.getFrutasEstoque();
-    System.out.println(f.getFirst().detalhesAcompanhamento());
-
-    AcaiService acaiService = new AcaiService();
-    Acompanhamento banana = new Fruta("Banana", 2);
-    Acompanhamento nutela = new Recheio("Nutella", 3);
-    List<Acompanhamento> acompanhamentos = new ArrayList<>();
-    acompanhamentos.add(banana);
-    acompanhamentos.add(nutela);
+    Acompanhamento banana = new Fruta(estoque.getFrutasEstoque().getFirst().getNome(),
+        estoque.getFrutasEstoque().getFirst().getPreco());
+    List<AcompanhamentoEscolhido> acompanhamentos = List
+        .of(new AcompanhamentoEscolhido(banana, QuantidadeAcompanhamento.IDEAL));
     Acai meuAcai = new Acai(acompanhamentos, TamanhoAcai.GRANDE);
 
-    acaiService.listarAcai(meuAcai);
+    System.out.println(meuAcai.toString());
 
   }
 
